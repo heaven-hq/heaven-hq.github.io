@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>js-io</title>
+</head>
+
+<body>
+  <h2>一、前言</h2>
+  <p>　　在牛客网用JavaScript做前端编程题，真的是无力吐槽了，写一个输入输出折腾了我半天，在此记录一下，如何使用JavaScript编程语言在牛客网这种平台写输入输出相关的代码</p>
+  <h2>二、常见方式</h2>
+  <h3>&nbsp;2.1&nbsp;JavaScript(Node 6.11.4)——稍微复杂点</h3>
+  <p>参考：<a href="https://blog.csdn.net/qq_30422457/article/details/80765595"
+      rel="noopener">https://blog.csdn.net/qq_30422457/article/details/80765595</a></p>
+  <h4>1.单行输入</h4>
+  <div class="cnblogs_code">
+    <pre>const readline = require('readline'<span style="color: rgba(0, 0, 0, 1)">);
+const rl </span>=<span style="color: rgba(0, 0, 0, 1)"> readline.createInterface({
+　　input: process.stdin,
+　　output: process.stdout
+});
+
+</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">单行输入</span>
+rl.on('line',<span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)">(data){
+　　</span><span style="color: rgba(0, 0, 255, 1)">var</span> result= data.split(' '); <span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">获取第一行的内容，存为数组</span>
+　　<span style="color: rgba(0, 0, 0, 1)">console.log(result);
+})</span></pre>
+  </div>
+  <p>示例：</p>
+  <p><img src="https://img2020.cnblogs.com/blog/1327126/202003/1327126-20200329224752608-999219545.png" alt=""></p>
+  <h4>&nbsp;2.固定行数的多行输入&nbsp;</h4>
+  <div class="cnblogs_code">
+    <pre><span style="color: rgba(0, 0, 255, 1)">var</span> readline = require('readline'<span style="color: rgba(0, 0, 0, 1)">);
+    const rl </span>=<span style="color: rgba(0, 0, 0, 1)"> readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+ 
+});
+ 
+</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">固定行数的多行输入 </span>
+const lines =<span style="color: rgba(0, 0, 0, 1)"> [];
+</span><span style="color: rgba(0, 0, 255, 1)">var</span> num=3; <span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">设定输入行数</span>
+<span style="color: rgba(0, 0, 255, 1)">var</span> rows=[]; <span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">用于存储每行的输入</span>
+<span style="color: rgba(0, 0, 0, 1)"> 
+rl.on(</span>'line',<span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)">(data){
+    
+    rows.push(data); </span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">将每次输入的行数据存入</span>
+
+    <span style="color: rgba(0, 0, 255, 1)">if</span>(num === rows.length){ <span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">输入的行数等于num值</span>
+        console.log(rows); <span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">输出结果</span>
+<span style="color: rgba(0, 0, 0, 1)">    }
+});</span></pre>
+  </div>
+  <p>示例：</p>
+  <p><img src="https://img2020.cnblogs.com/blog/1327126/202003/1327126-20200329225332643-1039282761.png" alt=""></p>
+  <h4>&nbsp;3.第一行是接下来输入数据的行数的多行输入</h4>
+  <div class="cnblogs_code">
+    <pre>const readline = require('readline'<span style="color: rgba(0, 0, 0, 1)">);
+const rl </span>=<span style="color: rgba(0, 0, 0, 1)"> readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+ 
+</span><span style="color: rgba(0, 0, 255, 1)">var</span> k = -1; <span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">初始化行数为-1，表示还未开始</span>
+<span style="color: rgba(0, 0, 255, 1)">var</span> rows = []; <span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">用于存储每行的输入</span>
+<span style="color: rgba(0, 0, 0, 1)"> 
+rl.on(</span>'line',<span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)">(data){
+    </span><span style="color: rgba(0, 0, 255, 1)">if</span>(k === -1<span style="color: rgba(0, 0, 0, 1)">){
+        k </span>= parseInt(data.trim()); <span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">读取第一行，获取接下来输入的行数</span>
+    }<span style="color: rgba(0, 0, 255, 1)">else</span><span style="color: rgba(0, 0, 0, 1)">{
+    
+        rows.push(data.trim()); </span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">将每次输入的行数据存入</span>
+ 
+        <span style="color: rgba(0, 0, 255, 1)">if</span>(k === rows.length){ <span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">当输入的行数等于设定的k值时，开始逻辑处理</span>
+            console.log(rows); <span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">输出结果</span>
+<span style="color: rgba(0, 0, 0, 1)">        }
+    }
+});</span></pre>
+  </div>
+  <p>示例：</p>
+  <p><img src="https://img2020.cnblogs.com/blog/1327126/202003/1327126-20200329230137668-449182602.png" alt=""></p>
+  <h3>2.2&nbsp;JavaScript(V8 6.0.0)——更简单一点</h3>
+  <p>注意：在JavaScript(V8 6.0.0)里使用console.log和print是一样的</p>
+  <h4>1.单行输入</h4>
+  <div class="cnblogs_code">
+    <pre><span style="color: rgba(0, 0, 255, 1)">var</span> line =<span style="color: rgba(0, 0, 0, 1)"> readline();
+</span><span style="color: rgba(0, 0, 255, 1)">var</span> result= line.split(' '); <span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">获取第一行的内容，存为数组</span>
+print(result);</pre>
+  </div>
+  <h4>2.固定行数的多行输入</h4>
+  <div class="cnblogs_code">
+    <pre><span style="color: rgba(0, 0, 255, 1)">var</span> line_1 =<span style="color: rgba(0, 0, 0, 1)"> readline();
+</span><span style="color: rgba(0, 0, 255, 1)">var</span> line_2 =<span style="color: rgba(0, 0, 0, 1)"> readline();
+</span><span style="color: rgba(0, 0, 255, 1)">var</span> result_1= line_1.split(' '); <span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">获取第一行的内容，存为数组</span>
+<span style="color: rgba(0, 0, 255, 1)">var</span> result_2= line_2.split(' '); <span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">获取第二行的内容，存为数组</span>
+print(result_1,result_2);</pre>
+  </div>
+  <h4>3.任意的多行输入</h4>
+  <div class="cnblogs_code">
+    <pre><span style="color: rgba(0, 0, 255, 1)">var</span> line =<span style="color: rgba(0, 0, 0, 1)"> readline();
+</span><span style="color: rgba(0, 0, 255, 1)">while</span><span style="color: rgba(0, 0, 0, 1)">(line){
+  </span><span style="color: rgba(0, 0, 255, 1)">var</span> lines = line.split(' '<span style="color: rgba(0, 0, 0, 1)">)
+  print(lines)
+}</span></pre>
+  </div>
+  <p>&nbsp;</p>
+  </div>
+</body>
+
+</html>
