@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8" />
+    <title>js的二进制和十进制转换</title>
+    <script>
+      var currentBlogId = 540259;
+      var currentBlogApp = "redsquirrel";
+      var cb_enable_mathjax = false;
+      var isLogined = false;
+      var isBlogOwner = false;
+      var skinName = "BlueFresh";
+      var visitorUserId = "";
+      var hasCustomScript = true;
+      try {
+        if (
+          hasCustomScript &&
+          document.referrer &&
+          document.referrer.indexOf("baidu.com") >= 0
+        ) {
+          Object.defineProperty(document, "referrer", { value: "" });
+          Object.defineProperty(Document.prototype, "referrer", {
+            get: function () {
+              return "";
+            },
+          });
+        }
+      } catch (error) {}
+      window.codeHighlightEngine = 1;
+      window.enableCodeLineNumber = false;
+      window.codeHighlightTheme = "cnblogs";
+    </script>
+    <script>
+      var currentPostDateAdded = "2019-09-20 02:43";
+    </script>
+  </head>
+  <body class="skin-bluefresh has-navbar">
+    <!--done-->
+    <div id="home">
+      <div id="main">
+        <div id="mainContent">
+          <div class="forFlow">
+            <div id="post_detail">
+              <!--done-->
+              <div id="topics">
+                <div class="post">
+                  <h1 class="postTitle">
+                    <a
+                      id="cb_post_title_url"
+                      class="postTitle2 vertical-middle"
+                      href="https://www.cnblogs.com/redsquirrel/p/11553597.html"
+                    >
+                      <span role="heading" aria-level="2"
+                        >js的二进制和十进制转换</span
+                      >
+                    </a>
+                  </h1>
+                  <div class="clear"></div>
+                  <div class="postBody">
+                    <div
+                      id="cnblogs_post_body"
+                      class="blogpost-body blogpost-body-html"
+                    >
+                      <ul>
+                        <li>
+                          <span
+                            style="
+                              background-color: rgba(153, 204, 255, 1);
+                              font-size: 15px;
+                            "
+                            >十进制转二进制：toString</span
+                          >
+                        </li>
+                      </ul>
+                      <div class="cnblogs_code">
+                        <pre><span style="color: rgba(0, 128, 128, 1)">1</span> <span style="color: rgba(0, 0, 255, 1)">var</span> num = 10
+<span style="color: rgba(0, 128, 128, 1)">2</span> console.log(num.toString(2))</pre>
+                      </div>
+                      <p>输出为</p>
+                      <div class="cnblogs_Highlighter">
+                        <pre class="brush:javascript;gutter:true;">1010</pre>
+                      </div>
+                      <p>
+                        利用toString(radix)方法可以将数字转为二进制字符串，radix表示要转为几进制
+                      </p>
+                      <p>&nbsp;</p>
+                      <ul>
+                        <li>
+                          <span style="background-color: rgba(153, 204, 255, 1)"
+                            >二进制转十进制：parseInt</span
+                          >
+                        </li>
+                      </ul>
+                      <p>&nbsp;</p>
+                      <div class="cnblogs_code">
+                        <pre><span style="color: rgba(0, 128, 128, 1)">1</span> console.log(parseInt("11"<span style="color: rgba(0, 0, 0, 1)">))
+</span><span style="color: rgba(0, 128, 128, 1)">2</span> console.log(parseInt("11",2))</pre>
+                      </div>
+                      <p>&nbsp;</p>
+                      <p>输出为：</p>
+                      <div class="cnblogs_Highlighter">
+                        <pre class="brush:javascript;gutter:true;">
+11
+3</pre
+                        >
+                      </div>
+                      <p>
+                        其中，string为必需。要被解析的字符串。radix为可选。表示要按照几进制来转换字符串，该值介于
+                        2 ~ 36 之间。如果省略该参数或其值为 0，则数字将以 10
+                        为基础来解析。如果它以 “0x” 或 “0X” 开头，将以 16
+                        为基数。如果该参数小于 2 或者大于 36，则parseInt()
+                        将返回 NaN。
+                      </p>
+                      <p><strong>说明</strong></p>
+                      <p>
+                        当参数 radix 的值为 0，或没有设置该参数时，parseInt()
+                        会根据 string 来判断数字的基数。<br />举例，如果 string
+                        以 "0x" 开头，parseInt() 会把 string
+                        的其余部分解析为十六进制的整数。如果 string 以 0
+                        开头，那么 ECMAScript v3 允许 parseInt()
+                        的一个实现把其后的字符解析为八进制或十六进制的数字。如果
+                        string 以 1 ~ 9 的数字开头，parseInt()
+                        将把它解析为十进制的整数。
+                      </p>
+                      <p>
+                        <span style="background-color: rgba(255, 255, 255, 1)"
+                          >&nbsp;</span
+                        >
+                      </p>
+                    </div>
+                    <div class="clear"></div>
+                    <div id="blog_post_info_block" role="contentinfo">
+                      <div id="blog_post_info"></div>
+                      <div class="clear"></div>
+                      <div id="post_next_prev"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end: topics 文章、评论容器-->
+            </div>            
+  </body>
+</html>
